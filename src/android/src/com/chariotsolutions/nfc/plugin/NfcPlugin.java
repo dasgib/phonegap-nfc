@@ -53,6 +53,7 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
     private static final String ENABLED = "enabled";
     private static final String INIT = "init";
     private static final String SHOW_SETTINGS = "showSettings";
+    private static final String GET_STATUS = "getStatus";
 
     private static final String NDEF = "ndef";
     private static final String NDEF_MIME = "ndef-mime";
@@ -169,6 +170,9 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
 
         } else if (action.equalsIgnoreCase(INIT)) {
             init(callbackContext);
+
+        } else if (action.equalsIgnoreCase(GET_STATUS)) {
+            callbackContext.success(getNfcStatus());
 
         } else if (action.equalsIgnoreCase(ENABLED)) {
             // status is checked before every call
